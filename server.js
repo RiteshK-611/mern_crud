@@ -11,15 +11,15 @@ const port = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-// app.use(express.static('./client/build'))
+app.use(express.static('./client/build'))
 
-// app.get("*", (req, res) => { //our GET route needs to point to the index.html in our build
-//   res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
-// });
+app.get("*", (req, res) => { //our GET route needs to point to the index.html in our build
+  res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+});
 
 // Connect to Mongo_DB
 
-const URI = process.env.MongoDB_URI;
+const URI = "mongodb+srv://Ritesh_k:rk1234@expense-tracker-umksm.mongodb.net/crud?retryWrites=true&w=majority";
 mongoose.connect(URI, {
   useNewUrlParser: true,
   useCreateIndex: true,
